@@ -85,16 +85,19 @@
       # webdevs need all the webs (except opera lol)
       - google-chrome
       - firefox
+      # WMs
+      - size-up
       # text editors i hate the least
       - atom
-      - macvim
       - mou
-      # virtual machines
-      - vmware-fusion
+      # virtual machine management
+      - vagrant
+      - virtualbox
       # other dev tools
       - dash
-      - github-desktop
+      - screenhero
       # non-dev stuff for general productivity
+      - alfred
       - caffeine
       - cloud
       - daisydisk
@@ -104,6 +107,10 @@
       - steam
       - transmission
       - vlc
+      - telegram
+      - slack
+      - karabiner
+      - 1password
 
   - name: install homebrew tools
     tags: brews
@@ -111,9 +118,13 @@
     with_items:
       # dev tools
       - ack
+      - ag
       - jq
       - gist
+      - tig
+      - tmux
       # text editor assistance
+      - neovim
       - ctags
       - shellcheck
       # heroku style development

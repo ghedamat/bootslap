@@ -43,10 +43,10 @@ before_install:
 #
 # We could also change that username for travis but let's not, that way we can
 # make sure our scripts don't rely on hard coded usernames anywhere.)
-env: BOOTSLAP_REPO=https://github.com/mroth/bootslap.git
+env: BOOTSLAP_REPO=https://github.com/ghedamat/bootslap.git
 
 install:
-  - curl -sL http://git.io/bootslap > /tmp/bootslap
+  - curl -sL https://raw.githubusercontent.com/ghedamat/bootslap/master/bootslap.sh > /tmp/bootslap
 
 script:
   - yes | bash /tmp/bootslap

@@ -42,6 +42,8 @@
   hosts: all
   gather_facts: yes
   tags: dotfiles
+  vars:
+    dotfiles_user: ghedamat
   tasks:
     - name: homeshick | clone homeshick
       git:  repo=https://github.com/andsens/homeshick.git
@@ -49,7 +51,7 @@
             update=no
 
     - name: homeshick | dotfiles cloned
-      git:  repo=https://github.com/{{ ansible_user_id }}/dotfiles.git
+      git:  repo=https://github.com/{{ dotfiles_user }}/dotfiles.git
             dest=~/.homesick/repos/dotfiles
             update=no
       register: dotfiles_cloned
@@ -59,22 +61,21 @@
       command: ~/.homesick/repos/homeshick/bin/homeshick link dotfiles --force
 
 
-- name: vim-janus
+- name: fzf
   hosts: all
   gather_facts: no
-  tags: vimjanus
+  tags: fzf
   tasks:
-    - name: install vim-janus
-      git: repo=https://github.com/carlhuda/janus.git
-           dest=~/.vim
-           update=no
+    - name: install fzf
+      git: repo=https://github.com/junegunn/fzf.git
+           dest=~/.fzf
+           update=yes
            recursive=no
-      register: janus_cloned
+      register: fzf_cloned
 
-    - name: bootstrap vim-janus if just first installed
-      when: janus_cloned|changed
-      command: rake chdir=~/.vim
-
+    - name: bootstrap fzf if just first installed
+      when: fzf_cloned|changed
+      command: ~/.fzf/install
 
 - name: xtra placeholder (prevents error condition on --skip-tags=xtra)
   hosts: all
