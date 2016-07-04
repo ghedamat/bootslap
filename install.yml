@@ -111,6 +111,7 @@
       - slack
       - karabiner
       - 1password
+      - skype
 
   - name: install homebrew tools
     tags: brews
